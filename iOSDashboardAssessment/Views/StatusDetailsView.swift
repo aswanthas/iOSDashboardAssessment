@@ -42,13 +42,16 @@ struct StatusDetailsView: View {
             .padding()
             
             // Job Status Tab Bar
-            Picker("", selection: $selectedStatus) {
-                ForEach(JobStatus.allCases, id: \.self) { status in
-                    Text(status.rawValue).tag(status)
-                }
+            HorizontalPickerView(
+                selected: Binding(
+                    get: { JobStatus.allCases.firstIndex(of: selectedStatus) ?? 0 },
+                    set: { selectedStatus = JobStatus.allCases[$0] }
+                ),
+                option: JobStatus.allCases.map { "\($0.rawValue) (\(viewModel.jobCount(for: $0)))" }
+            ) { index in
+                selectedStatus = JobStatus.allCases[index]
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .frame(height: 30)
             
             // List of Jobs based on status
             List(filteredJobs) { job in
@@ -61,13 +64,13 @@ struct StatusDetailsView: View {
             }
             Spacer()
         }
-        .toolbar {
-                   ToolbarItem(placement: .principal) {
-                       Text("Job Status")
-                           .font(.headline)
-                           .foregroundColor(.primary)
-                   }
-               }
+//        .toolbar {
+//                   ToolbarItem(placement: .principal) {
+//                       Text("Job Status")
+//                           .font(.headline)
+//                           .foregroundColor(.primary)
+//                   }
+//               }
         .navigationTitle("Jobs (\(viewModel.jobs.count))")
         .navigationBarTitleDisplayMode(.inline)
     }

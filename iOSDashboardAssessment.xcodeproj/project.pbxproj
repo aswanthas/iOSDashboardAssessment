@@ -18,6 +18,7 @@
 		7D4009832C80DE0300F46387 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4009822C80DE0300F46387 /* UserCardView.swift */; };
 		7D4009862C80DF1700F46387 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4009852C80DF1700F46387 /* DateFormater.swift */; };
 		7D90BEA02C81FC630060872F /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90BE9F2C81FC630060872F /* StatusType.swift */; };
+		7D90BEA22C8228B00060872F /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90BEA12C8228B00060872F /* HorizontalPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		7D4009822C80DE0300F46387 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		7D4009852C80DF1700F46387 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		7D90BE9F2C81FC630060872F /* StatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
+		7D90BEA12C8228B00060872F /* HorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				7D26EA692C804578005556C8 /* DashboardView.swift */,
 				7D4009822C80DE0300F46387 /* UserCardView.swift */,
 				7D26EA742C80A21D005556C8 /* StatusDetailsView.swift */,
+				7D90BEA12C8228B00060872F /* HorizontalPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				7D26EA6C2C808647005556C8 /* ViewModel.swift in Sources */,
 				7D4009862C80DF1700F46387 /* DateFormater.swift in Sources */,
 				3AC597562BF4D05C0092606C /* iOSDashboardAssessmentApp.swift in Sources */,
+				7D90BEA22C8228B00060872F /* HorizontalPickerView.swift in Sources */,
 				7D4009832C80DE0300F46387 /* UserCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
