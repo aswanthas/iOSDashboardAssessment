@@ -89,8 +89,9 @@ struct ReusableStatusCard: View {
                             .frame(width: 10, height: 10)
                             .cornerRadius(2)
                         Text("\(status.rawValue) (\(viewModel.jobStats[status] ?? 0))")
-                            .foregroundStyle(.gray)
                             .font(.footnote)
+                            .foregroundStyle(.black.opacity(0.9))
+
                     }
                 }
             case .invoice:

@@ -112,9 +112,12 @@ struct JobRowView: View {
                 .font(.headline)
             Text(job.title)
                 .font(.subheadline)
-            Text("\(job.startTime) - \(job.endTime)")
-                .font(.caption)
-                .foregroundColor(.secondary)
+            if let startTimeFormatted = job.startTime.timeFormat,
+               let endTimeFormatted = job.endTime.timeFormat {
+                Text("\(startTimeFormatted) - \(endTimeFormatted)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
         .padding(.vertical, 8)
     }
@@ -134,42 +137,5 @@ struct JobListView: View {
                     .foregroundColor(.secondary)
             }
         }
-    }
-}
-
-class JobStatsViewModel: ObservableObject {
-    @Published var jobs: [JobApiModel]
-    
-    init(jobs: [JobApiModel]) {
-        self.jobs = jobs
-    }
-    
-    var jobStats: [JobStatus: Int] {
-        Dictionary(grouping: jobs, by: { $0.status })
-            .mapValues { $0.count }
-    }
-    
-    var totalJobs: Int {
-        jobs.count
-    }
-    
-    func color(for status: JobStatus) -> Color {
-        switch status {
-        case .yetToStart:
-            return .purple
-        case .inProgress:
-            return .blue
-        case .canceled:
-            return .yellow
-        case .completed:
-            return .green
-        case .incomplete:
-            return .red
-        }
-    }
-    
-    func refreshJobs() {
-        // Simulate data refresh
-        jobs = SampleData.generateRandomJobList(size: 10)
     }
 }

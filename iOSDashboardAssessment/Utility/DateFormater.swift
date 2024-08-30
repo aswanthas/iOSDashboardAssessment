@@ -41,3 +41,38 @@ func formattedCurrentDate() -> String {
     
     return formattedDate
 }
+
+extension String {
+    var timeFormat: String? {
+        // Define the input date format
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        // Convert the string to a Date object
+        guard let date = dateFormatter.date(from: self) else { return nil }
+        
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let isToday = calendar.isDate(currentDate, inSameDayAs: date)
+        let sameDay = calendar.isDate(date, inSameDayAs: date)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        
+        let formattedTime = timeFormatter.string(from: date)
+        
+        let dateFormatterForDisplay = DateFormatter()
+        dateFormatterForDisplay.dateFormat = "dd/MM/yyyy"
+        
+        if isToday && sameDay {
+            return "Today, \(formattedTime)"
+        } else if sameDay {
+            let formattedDate = dateFormatterForDisplay.string(from: date)
+            return "\(formattedDate), \(formattedTime)"
+        } else {
+            let startDateFormatted = dateFormatterForDisplay.string(from: date)
+            let endDateFormatted = dateFormatterForDisplay.string(from: date) // Assuming endDate is different
+            return "\(startDateFormatted), \(formattedTime) - \(endDateFormatted), \(formattedTime)"
+        }
+    }
+}
