@@ -8,34 +8,21 @@
 import SwiftUI
 import SampleData
 
+enum Route {
+case detailPage
+}
 struct DashboardView: View {
-    @StateObject private var viewModel = DashboardViewModel(jobs: SampleData.generateRandomJobList(size: 10), invoices: SampleData.generateRandomInvoiceList(size: 10))
-    var body: some View {
-        JobSJobStatsViewExampleTwo()
-            .environmentObject(viewModel)
-    }
-}
-
-#Preview {
-    DashboardView()
-}
-
-struct JobSJobStatsViewExampleTwo: View {
-    @EnvironmentObject var viewModel: DashboardViewModel
-    
-
+    @StateObject private var viewModel = DashboardViewModel(jobs: SampleData.generateRandomJobList(size: 10),
+                                                            invoices: SampleData.generateRandomInvoiceList(size: 10))
     var body: some View {
         ZStack {
+            Color.bg
             NavigationView {
                 ScrollView {
                     VStack(spacing: 20) {
                         UserCardView()
                             .frame(height: 100)
-//                        NavigationLink {
-//                            StatusDetailsView()
-//                        } label: {
-                            jobStatus
-//                        }
+                        jobStatus
                         invoiceStatus
                         Spacer()
                     }
@@ -44,7 +31,8 @@ struct JobSJobStatsViewExampleTwo: View {
                 }
             }
         }
-        .ignoresSafeArea(.all)
+        .ignoresSafeArea(edges: .all)
+        .environmentObject(viewModel)
     }
     // MARK: Job Status
     var jobStatus: some View {
@@ -55,4 +43,8 @@ struct JobSJobStatsViewExampleTwo: View {
     var invoiceStatus: some View {
         ReusableStatusCard(statusType: .invoice)
     }
+}
+
+#Preview {
+    DashboardView()
 }
