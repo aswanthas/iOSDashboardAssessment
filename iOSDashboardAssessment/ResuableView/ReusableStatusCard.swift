@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ReusableStatusCard: View {
     @EnvironmentObject var viewModel: DashboardViewModel
     let statusType: StatusType
@@ -16,7 +15,7 @@ struct ReusableStatusCard: View {
     var body: some View {
         VStack {
             HStack {
-                Text(statusTitle)
+                Text(statusType.statusTitle)
                     .font(.subheadline.bold())
                     .foregroundStyle(.black)
                 Spacer()
@@ -31,11 +30,11 @@ struct ReusableStatusCard: View {
                     Group {
                         switch statusType {
                         case .job:
-                            Text("\(viewModel.totalJobs) \(statusTypeDescription)")
+                            Text("\(viewModel.totalJobs) \(statusType.statusTypeDescription)")
                             Spacer()
                             Text("\(viewModel.completedJobs) of \(viewModel.totalJobs)  completed")
                         case .invoice:
-                            Text("\(statusTypeDescription) (\(viewModel.totalInvoiceValue() ?? "$0.00"))")
+                            Text("\(statusType.statusTypeDescription) (\(viewModel.totalInvoiceValue() ?? "$0.00"))")
                             Spacer()
                             Text("\(viewModel.totalInvoiceCollected() ?? "$0.00") collected")
                         }
@@ -90,6 +89,7 @@ struct ReusableStatusCard: View {
                             .frame(width: 10, height: 10)
                             .cornerRadius(2)
                         Text("\(status.rawValue) (\(viewModel.jobStats[status] ?? 0))")
+                            .foregroundStyle(.gray)
                             .font(.footnote)
                     }
                 }
@@ -112,30 +112,6 @@ struct ReusableStatusCard: View {
         let screenWidth = width
         return CGFloat(count) / CGFloat(viewModel.totalJobs) * screenWidth
     }
-
-
-    enum StatusType {
-        case job
-        case invoice
-    }
-    
-    private var statusTitle: String {
-            switch statusType {
-            case .job:
-                return "Job Status"
-            case .invoice:
-                return "Invoice Status"
-            }
-        }
-
-        private var statusTypeDescription: String {
-            switch statusType {
-            case .job:
-                return "Jobs"
-            case .invoice:
-                return "Total value"
-            }
-        }
 }
 
 //#Preview {

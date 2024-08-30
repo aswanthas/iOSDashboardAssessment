@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct JobApiModel {
+public struct JobApiModel: Identifiable {
     public let id = UUID()
     public let jobNumber: Int
     public let title: String

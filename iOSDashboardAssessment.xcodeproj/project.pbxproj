@@ -13,11 +13,11 @@
 		3AC597672BF4D1040092606C /* SampleData in Frameworks */ = {isa = PBXBuildFile; productRef = 3AC597662BF4D1040092606C /* SampleData */; };
 		7D26EA6A2C804578005556C8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26EA692C804578005556C8 /* DashboardView.swift */; };
 		7D26EA6C2C808647005556C8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26EA6B2C808647005556C8 /* ViewModel.swift */; };
-		7D26EA6F2C808981005556C8 /* JobStatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26EA6E2C808981005556C8 /* JobStatModel.swift */; };
 		7D26EA722C808E3F005556C8 /* ReusableStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26EA712C808E3F005556C8 /* ReusableStatusCard.swift */; };
 		7D26EA752C80A21D005556C8 /* StatusDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26EA742C80A21D005556C8 /* StatusDetailsView.swift */; };
 		7D4009832C80DE0300F46387 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4009822C80DE0300F46387 /* UserCardView.swift */; };
 		7D4009862C80DF1700F46387 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4009852C80DF1700F46387 /* DateFormater.swift */; };
+		7D90BEA02C81FC630060872F /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90BE9F2C81FC630060872F /* StatusType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,11 +28,11 @@
 		3AC597642BF4D0B40092606C /* SampleData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SampleData; sourceTree = "<group>"; };
 		7D26EA692C804578005556C8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		7D26EA6B2C808647005556C8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		7D26EA6E2C808981005556C8 /* JobStatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatModel.swift; sourceTree = "<group>"; };
 		7D26EA712C808E3F005556C8 /* ReusableStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStatusCard.swift; sourceTree = "<group>"; };
 		7D26EA742C80A21D005556C8 /* StatusDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailsView.swift; sourceTree = "<group>"; };
 		7D4009822C80DE0300F46387 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		7D4009852C80DF1700F46387 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
+		7D90BE9F2C81FC630060872F /* StatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,6 @@
 				7D26EA732C80A097005556C8 /* Views */,
 				7D26EA702C808E0A005556C8 /* ResuableView */,
 				7D4009842C80DEF100F46387 /* Utility */,
-				7D26EA6D2C80895C005556C8 /* Model */,
 				3AC597592BF4D05D0092606C /* Assets.xcassets */,
 				3AC5975B2BF4D05D0092606C /* Preview Content */,
 			);
@@ -93,14 +92,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7D26EA6D2C80895C005556C8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7D26EA6E2C808981005556C8 /* JobStatModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7D26EA702C808E0A005556C8 /* ResuableView */ = {
@@ -125,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				7D4009852C80DF1700F46387 /* DateFormater.swift */,
+				7D90BE9F2C81FC630060872F /* StatusType.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -203,11 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D26EA752C80A21D005556C8 /* StatusDetailsView.swift in Sources */,
+				7D90BEA02C81FC630060872F /* StatusType.swift in Sources */,
 				7D26EA722C808E3F005556C8 /* ReusableStatusCard.swift in Sources */,
 				7D26EA6A2C804578005556C8 /* DashboardView.swift in Sources */,
 				7D26EA6C2C808647005556C8 /* ViewModel.swift in Sources */,
 				7D4009862C80DF1700F46387 /* DateFormater.swift in Sources */,
-				7D26EA6F2C808981005556C8 /* JobStatModel.swift in Sources */,
 				3AC597562BF4D05C0092606C /* iOSDashboardAssessmentApp.swift in Sources */,
 				7D4009832C80DE0300F46387 /* UserCardView.swift in Sources */,
 			);

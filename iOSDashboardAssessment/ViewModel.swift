@@ -51,31 +51,39 @@ class DashboardViewModel: ObservableObject {
         jobs.filter { $0.status == .completed }.count
     }
     
+    func jobs(for status: JobStatus) -> [JobApiModel] {
+            jobs.filter { $0.status == status }
+        }
+        
+        func jobCount(for status: JobStatus) -> Int {
+            jobs(for: status).count
+        }
+    
     func color(for status: JobStatus) -> Color {
         switch status {
         case .yetToStart:
-            return .purple
+            return .purple.opacity(0.6)
         case .inProgress:
-            return .blue
+            return .blue.opacity(0.6)
         case .canceled:
-            return .yellow
+            return .yellow.opacity(0.6)
         case .completed:
-            return .green
+            return .green.opacity(0.6)
         case .incomplete:
-            return .red
+            return .red.opacity(0.6)
         }
     }
     
     func color(for status: InvoiceStatus) -> Color {
         switch status {
         case .draft:
-            return .yellow
+            return .yellow.opacity(0.6)
         case .pending:
-            return .purple
+            return .purple.opacity(0.6)
         case .paid:
-            return .green
+            return .green.opacity(0.6)
         case .badDebt:
-            return .red
+            return .red.opacity(0.6)
         }
     }
 
@@ -109,4 +117,9 @@ class DashboardViewModel: ObservableObject {
         let formattedTotalPaid = formatter.string(from: NSNumber(value: value))
         return formattedTotalPaid
     }
+    
+    func refreshJobs() {
+            // Simulate data refresh
+            jobs = SampleData.generateRandomJobList(size: 10)
+        }
 }

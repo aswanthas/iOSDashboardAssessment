@@ -11,6 +11,7 @@ import SampleData
 enum Route {
 case detailPage
 }
+
 struct DashboardView: View {
     @StateObject private var viewModel = DashboardViewModel(jobs: SampleData.generateRandomJobList(size: 10),
                                                             invoices: SampleData.generateRandomInvoiceList(size: 10))
@@ -36,10 +37,11 @@ struct DashboardView: View {
     }
     // MARK: Job Status
     var jobStatus: some View {
-        ReusableStatusCard(statusType: .job)
-
+        NavigationLink(destination: StatusDetailsView(statusType: .job).environmentObject(viewModel)) {
+            ReusableStatusCard(statusType: .job)
+        }
     }
-    // MARK: Job Status
+    // MARK: Invoice Status
     var invoiceStatus: some View {
         ReusableStatusCard(statusType: .invoice)
     }
