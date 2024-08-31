@@ -23,8 +23,7 @@ struct ReusableStatusCard: View {
             .padding(8)
             
             Divider()
-                .background(.gray)
-            
+                .background(.gray.opacity(0.5))
             VStack {
                 HStack {
                     Group {

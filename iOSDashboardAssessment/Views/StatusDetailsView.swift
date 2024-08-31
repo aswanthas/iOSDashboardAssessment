@@ -109,13 +109,15 @@ struct JobRowView: View {
         GeometryReader(content: { geometry in
             VStack(alignment: .leading, spacing: 10) {
                 Text("#\(job.jobNumber)")
-                    .font(.headline)
+                    .font(.subheadline.bold())
+                    .foregroundColor(.secondary)
                 Text(job.title)
-                    .font(.subheadline)
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.black.opacity(0.8))
                 if let startTimeFormatted = job.startTime.timeFormat,
                    let endTimeFormatted = job.endTime.timeFormat {
                     Text("\(startTimeFormatted) - \(endTimeFormatted)")
-                        .font(.caption)
+                        .font(.caption.bold())
                         .foregroundColor(.secondary)
                 }
             }
@@ -130,19 +132,3 @@ struct JobRowView: View {
     }
 }
 
-
-struct JobListView: View {
-    let jobs: [JobApiModel]
-    
-    var body: some View {
-        List(jobs) { job in
-            VStack(alignment: .leading) {
-                Text("\(job.title)")
-                    .font(.headline)
-                Text("\(job.status.rawValue)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-        }
-    }
-}

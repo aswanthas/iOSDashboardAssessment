@@ -40,7 +40,7 @@ struct HorizontalPickerView: View {
                                         .frame(height: 1)
                                         .opacity(0)
                                     if selected == index {
-                                        Rectangle().fill(Color.blue)
+                                        Rectangle().fill(Color.purple)
                                             .frame(height: 3)
                                             .matchedGeometryEffect(id: index, in: line)
                                     }
