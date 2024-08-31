@@ -30,17 +30,23 @@ struct ReusableStatusCard: View {
                     Group {
                         switch statusType {
                         case .job:
-                            Text("\(viewModel.totalJobs) \(statusType.statusTypeDescription)")
-                            Spacer()
-                            Text("\(viewModel.completedJobs) of \(viewModel.totalJobs)  completed")
+                            Group {
+                                Text("\(viewModel.totalJobs) \(statusType.statusTypeDescription)")
+                                Spacer()
+                                Text("\(viewModel.completedJobs) of \(viewModel.totalJobs)  completed")
+                            }
+                            .foregroundStyle(.gray)
                         case .invoice:
-                            Text("\(statusType.statusTypeDescription) (\(viewModel.totalInvoiceValue() ?? "$0.00"))")
-                            Spacer()
-                            Text("\(viewModel.totalInvoiceCollected() ?? "$0.00") collected")
+                            Group {
+                                Text("\(statusType.statusTypeDescription) (\(viewModel.totalInvoiceValue() ?? "$0.00"))")
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("\(viewModel.totalInvoiceCollected() ?? "$0.00") collected")
+                                    .foregroundStyle(.black.opacity(0.8))
+                            }
                         }
                     }
                     .font(.subheadline.bold())
-                    .foregroundColor(.secondary)
                 }
                 statsBar
                 .frame(height: 15)
@@ -89,9 +95,8 @@ struct ReusableStatusCard: View {
                             .frame(width: 10, height: 10)
                             .cornerRadius(2)
                         Text("\(status.rawValue) (\(viewModel.jobStats[status] ?? 0))")
-                            .font(.footnote)
-                            .foregroundStyle(.black.opacity(0.9))
-
+                            .font(.footnote.bold())
+                            .foregroundStyle(.gray)
                     }
                 }
             case .invoice:
@@ -102,11 +107,13 @@ struct ReusableStatusCard: View {
                             .frame(width: 10, height: 10)
                             .cornerRadius(2)
                         Text("\(status.rawValue)(\(viewModel.priceConvertion(value: stats.total) ?? "$0"))")
-                            .font(.footnote)
+                            .font(.footnote.bold())
+                            .foregroundStyle(.gray)
                     }
                 }
             }
         }
+        .padding(.vertical, 10)
     }
                        
     private func barWidth(width: CGFloat,for count: Int) -> CGFloat {

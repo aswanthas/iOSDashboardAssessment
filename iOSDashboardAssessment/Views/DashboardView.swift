@@ -22,7 +22,7 @@ struct DashboardView: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         UserCardView()
-                            .frame(height: 100)
+                            .frame(height: 90)
                         jobStatus
                         invoiceStatus
                         Spacer()

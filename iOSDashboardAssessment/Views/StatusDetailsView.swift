@@ -56,6 +56,9 @@ struct StatusDetailsView: View {
             // List of Jobs based on status
             List(filteredJobs) { job in
                 JobRowView(job: job)
+                    .frame(height: 90)
+                    .listRowSeparator(.hidden)
+                
             }
             .listStyle(PlainListStyle())
             .refreshable {
@@ -64,13 +67,6 @@ struct StatusDetailsView: View {
             }
             Spacer()
         }
-//        .toolbar {
-//                   ToolbarItem(placement: .principal) {
-//                       Text("Job Status")
-//                           .font(.headline)
-//                           .foregroundColor(.primary)
-//                   }
-//               }
         .navigationTitle("Jobs (\(viewModel.jobs.count))")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -110,19 +106,27 @@ struct JobRowView: View {
     let job: JobApiModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("#\(job.jobNumber)")
-                .font(.headline)
-            Text(job.title)
-                .font(.subheadline)
-            if let startTimeFormatted = job.startTime.timeFormat,
-               let endTimeFormatted = job.endTime.timeFormat {
-                Text("\(startTimeFormatted) - \(endTimeFormatted)")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+        GeometryReader(content: { geometry in
+            VStack(alignment: .leading, spacing: 10) {
+                Text("#\(job.jobNumber)")
+                    .font(.headline)
+                Text(job.title)
+                    .font(.subheadline)
+                if let startTimeFormatted = job.startTime.timeFormat,
+                   let endTimeFormatted = job.endTime.timeFormat {
+                    Text("\(startTimeFormatted) - \(endTimeFormatted)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
-        }
-        .padding(.vertical, 8)
+            .padding(.leading, 10)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+            )
+
+        })
     }
 }
 

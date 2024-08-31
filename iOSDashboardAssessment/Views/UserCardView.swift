@@ -11,13 +11,13 @@ struct UserCardView: View {
     var body: some View {
         GeometryReader(content: { geometry in
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 20) {
                     Text("Hello, John")
                         .font(.title3.bold())
                         .foregroundStyle(.black)
-                        .padding()
                     Text(formattedCurrentDate())
-                    
+                        .font(.headline.bold())
+                        .foregroundColor(.secondary)
                 }
                 Spacer()
                 Image(.icUser)
